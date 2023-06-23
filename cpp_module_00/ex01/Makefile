@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/22 01:42:31 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/22 23:48:39 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,8 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 RM			= rm -rf
 
-SRC 		= utils.cpp \
-			  Contact.cpp \
-			  Phonebook.cpp \
-			  main.cpp
+SRC 		= Contact.cpp \
+			  Phonebook.cpp 
 
 OBJ 		= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.cpp=.o)))
 

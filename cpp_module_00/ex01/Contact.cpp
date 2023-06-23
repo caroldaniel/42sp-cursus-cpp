@@ -6,11 +6,32 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 00:36:12 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/22 01:41:43 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:51:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+void setInput(std::string attribute, const std::string prompt, const std::string errorMessage, void (Contact::*setter)(const std::string)) {
+	int attempts = 0;
+
+	while (attempts < 3) {
+		std::cout << prompt;
+		std::getline(std::cin, attribute);
+		
+		try {
+			(Contact().*setter)(attribute);
+			break ;
+		}
+		catch (std::invalid_argument& e) {
+			std::cout << errorMessage << std::endl;
+			attempts++;
+		}
+	}
+	if (attempts == 3) {
+		throw std::runtime_error("Failed to set the attribute after three attempts.");
+	}
+}
 
 // Constructors and destructors
 Contact::Contact(void) {
@@ -114,14 +135,15 @@ std::string	Contact::getDarkestSecret(void) {
 };
 
 // Methods
-void	setContact(void) {
- try {
-	setInput(_firstName, "Enter first name: ", "Invalid input. Please try again.", &Contact::setFirstName);
-	setInput(_lastName, "Enter last name: ", "Invalid input. Please try again.", &Contact::setLastName);
-	setInput(_nickname, "Enter nickname: ", "Invalid input. Please try again.", &Contact::setNickname);
-	setInput(_phoneNumber, "Enter phone number: ", "Invalid input. Please try again.", &Contact::setPhoneNumber);
-	setInput(_darkestSecret, "Enter darkest secret: ", "Invalid input. Please try again.", &Contact::setDarkestSecret);
-    } catch (const std::exception& e) {
+void	Contact::setContact(void) {
+	try {
+		setInput(_firstName, "Enter first name: ", "Invalid input. Please try again.", &Contact::setFirstName);
+		setInput(_lastName, "Enter last name: ", "Invalid input. Please try again.", &Contact::setLastName);
+		setInput(_nickname, "Enter nickname: ", "Invalid input. Please try again.", &Contact::setNickname);
+		setInput(_phoneNumber, "Enter phone number: ", "Invalid input. Please try again.", &Contact::setPhoneNumber);
+		setInput(_darkestSecret, "Enter darkest secret: ", "Invalid input. Please try again.", &Contact::setDarkestSecret);
+    } 
+	catch (const std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
 };

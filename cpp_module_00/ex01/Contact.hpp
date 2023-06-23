@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 00:36:16 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/22 01:40:31 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:52:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <iostream>
 # include <stdexcept>
 # include <regex>
-# include "utils.hpp"
+
+void setInput(std::string attribute, const std::string prompt, const std::string errorMessage, void (Contact::*setter)(std::string));
 
 class Contact {
 	private:
