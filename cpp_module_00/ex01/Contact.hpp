@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 00:36:16 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/22 23:52:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/26 21:01:22 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 # include <stdexcept>
-# include <regex>
 
-void setInput(std::string attribute, const std::string prompt, const std::string errorMessage, void (Contact::*setter)(std::string));
+// Color codes
+const std::string RESET = "\033[0m";
+const std::string RED = "\033[31m";
+const std::string GREEN = "\033[32m";
+const std::string YELLOW = "\033[33m";
 
 class Contact {
 	private:
@@ -46,6 +50,8 @@ class Contact {
 		std::string	getDarkestSecret();
 		// Methods
 		void		setContact();
+		void		setInput(const std::string& prompt, const std::string& errorMessage, void (Contact::*setter)(const std::string));
+		void		printContact();
 };
 
 #endif
