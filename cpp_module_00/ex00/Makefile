@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/21 16:19:20 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/28 20:57:50 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,9 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
+
+test:		all
+			@./run_test.sh
 
 # Colors
 CY			= \033[36;1m
