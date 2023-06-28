@@ -14,32 +14,47 @@
 
 
 int		main( void ) {
-
+	// Type alias for the sake of readability
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
+	// Array of initial amounts and its size
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
+
+	// Initialization of the accounts vector with the amounts array
 	accounts_t				accounts( amounts, amounts + amounts_size );
+	// Iterators to the beginning and end of the accounts vector
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
 
+	// Array of deposits and its size
 	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
 	size_t const		d_size( sizeof(d) / sizeof(int) );
+
+	// Initialization of the deposits vector with the deposits array
 	ints_t				deposits( d, d + d_size );
+	// Iterators to the beginning and end of the deposits vector
 	ints_t::iterator	dep_begin	= deposits.begin();
 	ints_t::iterator	dep_end		= deposits.end();
 
+	// Array of withdrawals and its size
 	int	const			w[]			= { 321, 34, 657, 4, 76, 275, 657, 7654 };
 	size_t const		w_size( sizeof(w) / sizeof(int) );
+
+	// Initialization of the withdrawals vector with the withdrawals array
 	ints_t				withdrawals( w, w + w_size );
+	// Iterators to the beginning and end of the withdrawals vector
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
+	// Display the status of the accounts before any operation
 	Account::displayAccountsInfos();
+	// Display the status of each account using a for each loop and a member function pointer
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
+	// Make deposits
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
 		  ++(it.first), ++(it.second) ) {
@@ -47,9 +62,12 @@ int		main( void ) {
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
+	// Display the status of the accounts after the deposits
 	Account::displayAccountsInfos();
+	// Display the status of each account using a for each loop and a member function pointer
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
+	// Make withdrawals
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
 		  ++(it.first), ++(it.second) ) {
@@ -57,7 +75,9 @@ int		main( void ) {
 		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
+	// Display the status of the accounts after the withdrawals
 	Account::displayAccountsInfos();
+	// Display the status of each account using a for each loop and a member function pointer
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	return 0;
