@@ -6,12 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:27:22 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/28 20:32:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:49:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <iomanip>
 #include <ctime>
 
 // Static declarations
@@ -113,7 +114,14 @@ void Account::displayStatus(void) const {
 void Account::_displayTimestamp(void) {
 	std::time_t t = std::time(0);
 	std::tm* now = std::localtime(&t);
-	std::cout << "[" << now->tm_year + 1900 << now->tm_mon + 1 << now->tm_mday;
-	std::cout << "_" << now->tm_hour << now->tm_min << now->tm_sec << "] ";
+	std::cout << "[";
+	std::cout << std::setfill('0') << std::setw(4) << now->tm_year + 1900;
+	std::cout << std::setfill('0') << std::setw(2) << now->tm_mon + 1;
+	std::cout << std::setfill('0') << std::setw(2) << now->tm_mday;
+	std::cout << "_";
+	std::cout << std::setfill('0') << std::setw(2) << now->tm_hour;
+	std::cout << std::setfill('0') << std::setw(2) << now->tm_min;
+	std::cout << std::setfill('0') << std::setw(2) << now->tm_sec;
+	std::cout << "] ";
 	return ;
 }
