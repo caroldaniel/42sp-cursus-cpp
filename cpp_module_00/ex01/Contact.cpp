@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 00:36:12 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/26 21:03:53 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:36:11 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,13 @@ void	Contact::setContact(void) {
 		setInput("\tEnter darkest secret: ", "Invalid input. Please try again.", &Contact::setDarkestSecret);
 		std::cout << GREEN << "Contact added successfully!\n" << RESET << std::endl;
     } 
-	catch (const std::exception& e) {
-        std::cout << RED << "\nContact not added: " << e.what() << "\n" << RESET << std::endl;
+	catch (const std::runtime_error& e) {
+		clearInput(_firstName);
+		clearInput(_lastName);
+		clearInput(_nickname);
+		clearInput(_phoneNumber);
+		clearInput(_darkestSecret);
+		throw std::runtime_error(e.what());
     }
 	return ;
 }
@@ -153,6 +158,10 @@ void 	Contact::setInput(const std::string& prompt, const std::string& errorMessa
 	if (!isValid)
 		throw std::runtime_error("Failed to set the attribute after three attempts.");
 	return ;
+}
+
+void	Contact::clearInput(std::string& input) {
+	input.clear();
 }
 
 void	Contact::printContact(void) {

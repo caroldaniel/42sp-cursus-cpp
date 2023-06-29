@@ -6,16 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:17:52 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/26 20:18:01 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/28 22:15:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
-
-const int EXIT = 0;
-const int ADD = 1;
-const int SEARCH = 2;
-
 
 int	main(void) {
 	Phonebook	phonebook;
@@ -27,7 +22,7 @@ int	main(void) {
 		std::cout << "\nPlease enter a command: ";
 		std::getline(std::cin, input);
 		if (input == "EXIT") {
-			std::cout << GREEN << "\nBye!" << std::endl;
+			std::cout << GREEN << "\nBye!" << RESET << std::endl;
 			break ;
 		}
 		else if (input == "ADD") {

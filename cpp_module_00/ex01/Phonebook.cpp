@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 01:04:25 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/26 21:23:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:29:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	Phonebook::addContact(void) {
 			std::cout << YELLOW << "Phonebook is full. Oldest register have been replaced." << RESET << std::endl;
 		_index++;
 	}
-	catch (const std::exception& e) {
-		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
+	catch (const std::runtime_error& e) {
+		std::cout << RED << "Contact not added: " << e.what() << RESET << std::endl;
 	}
 	return ;
 }

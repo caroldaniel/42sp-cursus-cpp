@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 00:36:16 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/26 21:01:22 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:11:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Contact {
 		// Methods
 		void		setContact();
 		void		setInput(const std::string& prompt, const std::string& errorMessage, void (Contact::*setter)(const std::string));
+		void		clearInput(std::string& input);
 		void		printContact();
 };
 
