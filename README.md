@@ -29,3 +29,8 @@ Originally designed to be a mini piscine, CPP is composed of 9 modules that atte
 The project
 </h2>
 
+<details>
+	<summary>CPP Module 00</summary>
+	<p>The first Module of CPP works like every loving, carefull father when he first teaches his child how to swim: by promptly throwing them into the pool, no lifevest in sight. Pray there are no sharks in sight!</p>
+	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/What-you-must-know-to-start-CPP">What you need to know to start CPP</a> </p>	
+</details>
