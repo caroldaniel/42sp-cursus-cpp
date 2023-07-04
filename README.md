@@ -42,7 +42,7 @@ The project
 </details>
 
 <details>
-	<summary>CPP Module 01</summary>
-	<p>The third module is the begining of understanding, indeed, what is C++, and the syntax, lexical and analytical perks of it.</p>
+	<summary>CPP Module 02</summary>
+	<p>The third module is the begining of understanding what C++ is, and getting ourselves closer to the syntax, and lexical and analytical perks of it.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/The-Orthodox-Canonical-Form">The Orthodox Canonical Form</a> </p>	
 </details>
