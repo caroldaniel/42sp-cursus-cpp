@@ -40,3 +40,9 @@ The project
 	<p>The second module talks extensively about pointers, references and everything else you've already learned in C but seemed to have completely erased from your memory.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Memory-Allocation">Memory Allocation in C++</a> </p>	
 </details>
+
+<details>
+	<summary>CPP Module 01</summary>
+	<p>The third module is the begining of understanding, indeed, what is C++, and the syntax, lexical and analytical perks of it.</p>
+	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/The-Orthodox-Canonical-Form">The Orthodox Canonical Form</a> </p>	
+</details>
