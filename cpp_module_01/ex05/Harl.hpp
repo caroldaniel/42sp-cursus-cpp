@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:08:31 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/04 16:23:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:56:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ const std::string GREEN = "\033[1;32m";
 const std::string YELLOW = "\033[1;33m";
 const std::string BLUE = "\033[1;34m";
 const std::string WHITE = "\033[1;37m";
+const std::string ORANGE = "\033[1;38;5;202m";
 
 class Harl
 {

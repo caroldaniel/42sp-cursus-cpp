@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:08:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/04 16:29:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:58:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Harl::Harl(void)
 
 Harl::~Harl(void)
 {
-	std::cout << GREEN << std::endl << "Harl is gone!" << std::endl << RESET << std::endl;
+	std::cout << GREEN << "Harl is gone!" << std::endl << RESET << std::endl;
 }
 
 // Private methods
@@ -31,12 +31,12 @@ void	Harl::_debug(void)
 
 void	Harl::_info(void)
 {
-	std::cout << WHITE << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << RESET  << std::endl;
+	std::cout << YELLOW << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << RESET  << std::endl;
 }
 
 void	Harl::_warning(void)
 {
-	std::cout << YELLOW << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << RESET  << std::endl;
+	std::cout << ORANGE << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << RESET  << std::endl;
 }
 
 void	Harl::_error(void)
@@ -58,5 +58,5 @@ void	Harl::complain(const std::string& level)
 			return ;
 		}
 	}
-	std::cout << level << ": Invalid level." << std::endl;
+	std::cout << WHITE << "Bla bla bla bla... [in the distance]" << RESET << std::endl;
 }
