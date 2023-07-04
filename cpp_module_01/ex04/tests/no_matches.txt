@@ -1,0 +1,4 @@
+This is a sample text file.
+It does not contain the word declared.
+
+There are no occurrences of the replacement string in this file anywhere.
