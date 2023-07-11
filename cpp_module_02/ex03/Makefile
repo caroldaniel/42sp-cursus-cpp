@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/07/09 22:52:10 by cado-car         ###   ########.fr        #
+#    Updated: 2023/07/11 15:59:09 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ fclean:		clean
 
 leak:		all
 			valgrind --leak-check=full --track-origins=yes ./${NAME} ERROR
+
+test:		all
+			./run_tests.sh
 
 # Colors
 CY			= \033[36;1m

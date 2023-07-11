@@ -1,41 +1,50 @@
 #!/bin/bash
 
-# Test cases
 test_cases=(
-  "1 1 0 0 2 0 0 2"    # Point inside triangle
-  "3 3 0 0 2 0 0 2"    # Point outside triangle
-  "1 1 0 0 2 0 1 1"    # Point on triangle edge
-  "0 0 0 0 2 0 0 2"    # Point coincides with triangle vertex
-  "1 1 1 1 1 1 1 1"    # Degenerate triangle (points coincident)
+    "1 2 3 4 5 6"                                 # Insufficient number of parameters
+    ""                                            # No parameters
+    "1 2 3 4 5 6 2 a"                             # At least one non-numeric parameter
+    "2 2 0 0 4 0 2 4"                             # Point inside the triangle (integer coordinates)
+    "3 3 0 0 4 0 2 4"                             # Point outside the triangle (integer coordinates)
+    "2.5 2.5 0 0 4 0 2 4"                         # Point inside the triangle (floating-point coordinates)
+    "3.5 3.5 0 0 4 0 2 4"                         # Point outside the triangle (floating-point coordinates)
+    "0 0 0 0 4 0 2 4"                             # Point coincides with one of the vertices (integer coordinates)
+    "2.5 4 0 0 4 0 2.5 4"                         # Point coincides with one of the vertices (floating-point coordinates)
+    "1 1 0 0 4 0 2 4"                             # Point coincides with one of the edges (integer coordinates)
+    "2 2.5 0 0 4 0 2 4"                           # Point coincides with one of the edges (floating-point coordinates)
+    "5 5 0 0 4 0 2 4"                             # Point lies on the extension of one of the edges (integer coordinates)
+    "6.5 8 0 0 4 0 2 4"                           # Point lies on the extension of one of the edges (floating-point coordinates)
+    "5 1 0 0 4 0 2 4"                             # Point lies on the same line as the edges but outside the triangle (integer coordinates)
+    "6.5 1.5 0 0 4 0 2 4"                         # Point lies on the same line as the edges but outside the triangle (floating-point coordinates)
+    "2.345 3.678 1.23 4.56 7.89 9.01 2.34 5.67"   # Custom test case with floating-point coordinates
 )
 
-# Expected outputs corresponding to test cases
 expected_outputs=(
-  "The point is inside the triangle."
-  "The point is outside the triangle."
-  "The point is inside the triangle."
-  "The point is inside the triangle."
-  "Error: invalid triangle."
+    "Error: invalid number of arguments."
+    "Error: invalid number of arguments."
+    "Error: invalid argument."
+    "The point is inside the triangle."
+    "The point is outside the triangle."
+    "The point is inside the triangle."
+    "The point is outside the triangle."
+    "The point is inside the triangle."
+    "The point is inside the triangle."
+    "The point is inside the triangle."
+    "The point is inside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
 )
 
-# Iterate over test cases
-for ((i=0; i<${#test_cases[@]}; i++)); do
-  echo "Test Case $((i+1)): ${test_cases[i]}"
-
-  # Execute BSP program with test case
-  echo "./BSP ${test_cases[i]}"
-  output=$(./BSP ${test_cases[i]})
-
-  # Compare expected output with actual output
-  if [ "$output" = "${expected_outputs[i]}" ]; then
-    echo "Expected: ${expected_outputs[i]}"
-    echo "Actual:   $output"
-    echo "Result:   Pass"
-  else
-    echo "Expected: ${expected_outputs[i]}"
-    echo "Actual:   $output"
-    echo "Result:   Fail"
-  fi
-
-  echo
+for i in "${!test_cases[@]}"; do
+    printf -v test_case_number "%02d" $((i+1))
+    echo -n "Test Case $test_case_number: "
+    output=$(./BSP ${test_cases[i]})
+    if [[ "$output" == "${expected_outputs[i]}" ]]; then
+        echo -e "\e[32mPASSED\e[0m"   # Print PASSED in green
+    else
+        echo -e "\e[31mFAILED\e[0m"   # Print FAILED in red
+    fi
 done

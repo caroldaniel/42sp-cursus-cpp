@@ -6,18 +6,22 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 17:41:53 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/10 13:01:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/11 15:53:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Triangle.hpp"
 #include <cstdlib>
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <sstream>
 
 static bool		check_args(int argc, char **argv);
+static bool 	isNumeric(const std::string& str);
 static Fixed	*get_args(char **argv);
 
-int	main(int argc, char **argv)
-{
+int	main(int argc, char **argv) {
 	Fixed *args;
 	// check if arguments are valid
 	if (!check_args(argc, argv))
@@ -44,27 +48,27 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-static bool	check_args(int argc, char **argv)
-{
+static bool	check_args(int argc, char **argv) {
 	// check if the number of arguments is correct
 	if (argc != 9) {
 		std::cout << "Error: invalid number of arguments." << std::endl;
 		return (false);
 	}
 	// Check if the arguments are numeric
-	for (int i = 1; i < argc; i++) {
-		bool dot = false;
-		for (int j = argv[i][0] == '-' || argv[i][0] == '+' ? 1 : 0; argv[i][j]; j++) {
-			if (argv[i][j] == '.' && !dot)
-				dot = true;
-			else if (!std::isdigit(argv[i][j])) {
-				std::cout << "Error: invalid argument." << std::endl;
-				return (false);
-			}
-		}
-		return (true);
-	}
+	for (int i = 1; i < argc; ++i) {
+        if (!isNumeric(argv[i])) {
+			std::cout << "Error: invalid argument." << std::endl;
+            return false;  // If any argument is not numeric, return false
+        }
+    }
 	return (true);
+}
+
+static bool isNumeric(const std::string& str) {
+    std::istringstream iss(str);
+    float f;
+    iss >> std::noskipws >> f;
+    return iss.eof() && !iss.fail();
 }
 
 static Fixed	*get_args(char **argv)
