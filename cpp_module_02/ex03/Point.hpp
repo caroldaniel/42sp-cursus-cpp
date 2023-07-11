@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:50:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/09 22:35:32 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:21:35 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ private:
 	Fixed _y;
 public:
 	Point(void);
-	Point(const Point &other);
 	Point(const Fixed x, const Fixed y);
+	Point(const Point &other);
 	~Point(void);
 
 	Point	&operator=(const Point &other);

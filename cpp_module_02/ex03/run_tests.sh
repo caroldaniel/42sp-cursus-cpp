@@ -10,8 +10,8 @@ test_cases=(
     "3.5 3.5 0 0 4 0 2 4"                         # Point outside the triangle (floating-point coordinates)
     "0 0 0 0 4 0 2 4"                             # Point coincides with one of the vertices (integer coordinates)
     "2.5 4 0 0 4 0 2.5 4"                         # Point coincides with one of the vertices (floating-point coordinates)
-    "1 1 0 0 4 0 2 4"                             # Point coincides with one of the edges (integer coordinates)
-    "2 2.5 0 0 4 0 2 4"                           # Point coincides with one of the edges (floating-point coordinates)
+    "2 1 1 1 3 1 2 4"                             # Point coincides with one of the edges (integer coordinates)
+    "4.5 1 4.5 -3 4.5 5 10 -1"                    # Point coincides with one of the edges (floating-point coordinates)
     "5 5 0 0 4 0 2 4"                             # Point lies on the extension of one of the edges (integer coordinates)
     "6.5 8 0 0 4 0 2 4"                           # Point lies on the extension of one of the edges (floating-point coordinates)
     "5 1 0 0 4 0 2 4"                             # Point lies on the same line as the edges but outside the triangle (integer coordinates)
@@ -27,10 +27,10 @@ expected_outputs=(
     "The point is outside the triangle."
     "The point is inside the triangle."
     "The point is outside the triangle."
-    "The point is inside the triangle."
-    "The point is inside the triangle."
-    "The point is inside the triangle."
-    "The point is inside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
+    "The point is outside the triangle."
     "The point is outside the triangle."
     "The point is outside the triangle."
     "The point is outside the triangle."

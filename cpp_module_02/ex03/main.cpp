@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 17:41:53 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/11 15:53:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:20:26 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	main(int argc, char **argv) {
 		std::cout << "Error: invalid triangle." << std::endl;
 		return (1);
 	}
-	Triangle triangle = Triangle(a, b, c);
-	// Check if the point is inside the triangle
-	if (triangle.containsPoint(point))
+	if (bsp(a, b, c, point))
 		std::cout << "The point is inside the triangle." << std::endl;
 	else
 		std::cout << "The point is outside the triangle." << std::endl;

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 19:02:02 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/09 22:48:20 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:20:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ public:
 	// Methods
 	bool	containsPoint(Point const &p) const;
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

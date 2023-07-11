@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 19:01:45 by cado-car          #+#    #+#             */
-/*   Updated: 2023/07/09 22:40:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:27:52 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ bool	Triangle::containsPoint(Point const &p) const {
   Fixed v = ((dot00 * dot12) - (dot01 * dot02)) / invDenom;
 
   // Check if the point is inside the triangle
-  return (u >= Fixed(0) && v >= Fixed(0) && (u + v) <= Fixed(1));
+  return (u > Fixed(0) && v > Fixed(0) && (u + v) < Fixed(1) && u < Fixed(1) && v < Fixed(1));
 }

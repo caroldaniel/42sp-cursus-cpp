@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/07/11 15:59:09 by cado-car         ###   ########.fr        #
+#    Updated: 2023/07/11 16:22:21 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ RM			= rm -rf
 SRC 		= main.cpp \
 			Fixed.cpp \
 			Point.cpp \
-			Triangle.cpp
+			Triangle.cpp \
+			bsp.cpp
 
 OBJ 		= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.cpp=.o)))
 
