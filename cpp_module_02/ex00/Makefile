@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/07/08 21:03:18 by cado-car         ###   ########.fr        #
+#    Updated: 2023/07/11 16:04:45 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,14 @@ clean:
 			@printf "\n$(RE)Objects removed!$(RC)\n\n"
 
 fclean:		clean
-			$(RM) $(NAME) tests/*.txt.replace
+			$(RM) $(NAME) test_output.log
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
 
 leak:		all
 			valgrind --leak-check=full --track-origins=yes ./${NAME} ERROR
+
+test:		all
+			./run_test.sh
 
 # Colors
 CY			= \033[36;1m
