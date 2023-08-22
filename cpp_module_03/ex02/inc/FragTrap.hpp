@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:06:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/21 21:13:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:39:08 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class FragTrap : public ClapTrap
 		FragTrap(const FragTrap& other);
 		// Destructor
 		~FragTrap(void);
+		// Operator overloads
+		FragTrap	&operator=(const FragTrap &other);
 		// Member functions
 		void	highFivesGuys(void);
 };

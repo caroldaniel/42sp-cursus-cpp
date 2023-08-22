@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:06:48 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/21 21:13:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:39:24 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap " << _name << " destructed!" << std::endl;
 	return ;
+}
+
+// Operator overloads
+FragTrap	&FragTrap::operator=(const FragTrap &other)
+{
+	if (this == &other)
+		return (*this);
+	_name = other._name;
+	_hitPoints = other._hitPoints;
+	_energyPoints = other._energyPoints;
+	_attackDamage = other._attackDamage;
+	return (*this);
 }
 
 // Member functions

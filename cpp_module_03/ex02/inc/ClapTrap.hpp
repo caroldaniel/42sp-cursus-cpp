@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:07:16 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/21 21:10:15 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:39:39 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include <iostream>
 #include <string>
+
+// Color codes
+const std::string RESET = "\033[0m";
+const std::string RED = "\033[31m";
+const std::string GREEN = "\033[32m";
+const std::string YELLOW = "\033[33m";
 
 class ClapTrap
 {
