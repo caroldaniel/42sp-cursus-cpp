@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:07:04 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/20 21:56:54 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ ClapTrap::ClapTrap(void)
 	std::cout << "Default ClapTrap constructed!" << std::endl;
 	return ;
 }
-
 ClapTrap::ClapTrap(std::string &name) 
 	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap " << _name << " constructed!" << std::endl;
 	return ;
 }
-
+ClapTrap::ClapTrap(const ClapTrap &source) {
+	*this = source;
+	std::cout << "ClapTrap " << _name << " constructed!" << std::endl;
+	return ;
+}
 ClapTrap::~ClapTrap(void) {
 	std::cout << "ClapTrap " << _name << " destructed!" << std::endl;
 	return ;
@@ -53,6 +56,24 @@ int			ClapTrap::getEnergyPoints(void) {
 }
 int			ClapTrap::getAttackDamage(void) {
 	return (_attackDamage);
+}
+
+// Setters
+void	ClapTrap::setName(std::string name) {
+	_name = name;
+	return ;
+}
+void	ClapTrap::setHitPoints(int hitPoints) {
+	_hitPoints = hitPoints;
+	return ;
+}
+void	ClapTrap::setEnergyPoints(int energyPoints) {
+	_energyPoints = energyPoints;
+	return ;
+}
+void	ClapTrap::setAttackDamage(int attackDamage) {
+	_attackDamage = attackDamage;
+	return ;
 }
 
 // Member functions
