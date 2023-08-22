@@ -1,8 +1,13 @@
 .vscode
+.gitignore
+intra/
+**/intra/
+**/test_output.log
 **/obj/
 **/**.o
 **/Fixed
 **/BSP
-.gitignore
-intra/
-**/test_output.log
+**/ClapTrap
+**/ScavTrap
+**/FragTrap
+**/DiamondTrap
