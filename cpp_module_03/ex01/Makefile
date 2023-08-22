@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/21 20:39:20 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/21 21:07:52 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ clean:
 			@printf "\n$(RE)Objects removed!$(RC)\n\n"
 
 fclean:		clean
-			$(RM) $(NAME) test_output.log
+			$(RM) $(NAME)
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
 
 leak:		all
