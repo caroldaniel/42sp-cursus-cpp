@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/22 15:19:57 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/22 15:32:55 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,15 @@ OBJ_PATH	=./obj/
 SRC_PATH	=./src/
 INC_PATH	=./inc/
 
-
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98 -I $(INC_PATH)
 
 RM			= rm -rf
 
+VPATH		= $(SRC_PATH) 
+
 SRC 		= main.cpp \
 			ClapTrap.cpp
-
-VPATH		= $(SRC_PATH) 
 
 OBJ 		= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.cpp=.o)))
 
