@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 21:06:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/21 21:59:11 by cado-car         ###   ########.fr       */
+/*   Created: 2023/08/21 19:40:05 by cado-car          #+#    #+#             */
+/*   Updated: 2023/08/22 14:28:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-// FragTrap class
-class FragTrap : virtual public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
-	public:
-		// Default constructor
-		FragTrap(void);
-		// Class constructor
-		FragTrap(std::string name);
-		// Copy constructor
-		FragTrap(const FragTrap& other);
-		// Destructor
-		~FragTrap(void);
-		// Member functions
-		void	highFivesGuys(void);
+public:
+	// Default constructor
+	ScavTrap(void);
+	// Constructor
+	ScavTrap(std::string &name);
+	// Copy constructor
+	ScavTrap(const ScavTrap &source);
+	// Destructor
+	~ScavTrap(void);
+	// Operator
+	ScavTrap	&operator=(const ScavTrap &source);
+	// Member functions
+	void	attack(std::string const &target);
+	void	guardGate(void);
 };
 
 #endif

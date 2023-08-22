@@ -6,16 +6,18 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/21 21:56:38 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/22 14:23:56 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= DiamondTrap
 
 OBJ_PATH	=./obj/
+SRC_PATH	=./src/
+INC_PATH	=./inc/
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wshadow -I $(INC_PATH)
 
 RM			= rm -rf
 
@@ -24,6 +26,8 @@ SRC 		= main.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp \
 			DiamondTrap.cpp
+
+VPATH		= $(SRC_PATH) 
 
 OBJ 		= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.cpp=.o)))
 
@@ -35,7 +39,7 @@ $(OBJ_PATH)%.o: %.cpp
 
 $(NAME): 	$(OBJ)
 			@printf "\n$(CY)Generating executable...$(RC)\n"
-			$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJ) -I $(OBJ_PATH) -o $(NAME)
 			@printf "\n$(GR)Done!$(RC)\n"
 
 all:		$(NAME)
