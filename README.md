@@ -30,19 +30,25 @@ The project
 </h2>
 
 <details>
-	<summary>CPP Module 00</summary>
+	<summary>CPP Module 00 <b>(100/100)</b></summary>
 	<p>The first Module of CPP works like every loving, carefull father when he first teaches his child how to swim: by promptly throwing them into the pool, no lifevest in sight. Pray there are no sharks in sight!</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/What-you-must-know-to-start-CPP">What you need to know to start CPP</a> </p>	
 </details>
 
 <details>
-	<summary>CPP Module 01</summary>
+	<summary>CPP Module 01 <b>(100/100)</b></summary>
 	<p>The second module talks extensively about pointers, references and everything else you've already learned in C but seemed to have completely erased from your memory.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Memory-Allocation">Memory Allocation in C++</a> </p>	
 </details>
 
 <details>
-	<summary>CPP Module 02</summary>
+	<summary>CPP Module 02 <b>(100/100)</b></summary>
 	<p>The third module is the begining of understanding what C++ is, and getting ourselves closer to the syntax, and lexical and analytical perks of it.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/The-Orthodox-Canonical-Form">The Orthodox Canonical Form</a> </p>	
+</details>
+
+<details>
+	<summary>CPP Module 03 <b>(100/100)</b></summary>
+	<p>The fourth module is all about inheritance and all of its challenges and perks.</p>
+	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Inheritance-in-CPP">Inheritance in C++</a> </p>
 </details>
