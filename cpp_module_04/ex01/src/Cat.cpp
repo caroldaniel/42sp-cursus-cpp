@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:30:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 11:18:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:08:05 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ Cat::Cat(void) : Animal("Cat") {
 	return ;
 }
 Cat::Cat(const Cat& other) : Animal(other) {
-	*this = other;
+	if (this == &other)
+		return ;
+	_type = other._type;
+	_brain = new Brain(*other._brain);
 	std::cout << "Cat copy constructed!" << std::endl;
 	return ;
 }

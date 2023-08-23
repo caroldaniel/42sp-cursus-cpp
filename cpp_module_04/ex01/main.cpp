@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:37:30 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/22 18:26:22 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:21:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ int	main(void) {
 
 	std::cout << std::endl << YELLOW << "-------- Create Cat --------" << RESET << std::endl << std::endl;
 	const Animal* i = new Cat();
+
+	std::cout << std::endl << YELLOW << "-------- Make Sounds --------" << RESET << std::endl << std::endl;
+	j->makeSound();
+	i->makeSound();
+
+	std::cout << std::endl << YELLOW << "-------- Create copies --------" << RESET << std::endl << std::endl;
+	Animal* copy_dog = new Dog(*((Dog*)j));
+	Animal* copy_cat = new Cat(*((Cat*)i));
+
+	std::cout << std::endl << YELLOW << "-------- Delete Copies --------" << RESET << std::endl << std::endl;
+	delete copy_dog;
+	delete copy_cat;
+	
+	std::cout << std::endl << YELLOW << "-------- Assign Operator (Shallow) --------" << RESET << std::endl << std::endl;
+	// assignation operator
+	copy_dog = (Dog*)j;
+	copy_cat = (Cat*)i;	
+	copy_dog->makeSound();
+	copy_cat->makeSound();
 	
 	std::cout << std::endl << YELLOW << "-------- Delete Dog --------" << RESET << std::endl << std::endl;
 	delete j; //should not create a leak

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:23:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 11:18:35 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:17:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ANIMAL_HPP
 
 # include <iostream>
+# include <sstream>
 # include "Brain.hpp"
 
 // Animal Class

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 18:16:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/22 18:17:09 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:18:08 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BRAIN_HPP
 
 # include <iostream>
+# include <sstream>
 
 class Brain
 {
