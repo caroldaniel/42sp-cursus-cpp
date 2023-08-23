@@ -6,19 +6,19 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:47:25 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/22 17:54:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:22:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 // Constructors and destructor
-WrongAnimal::WrongAnimal(void) : type("") {
+WrongAnimal::WrongAnimal(void) : _type("") {
 	std::cout << "WrongAnimal default constructor called!" << std::endl;
 	return ;
 }
-WrongAnimal::WrongAnimal(std::string wrongAnimal_type) : type(wrongAnimal_type) {
-	std::cout << "WrongAnimal " << type << " constructor called!" << std::endl;
+WrongAnimal::WrongAnimal(std::string type) : _type(type) {
+	std::cout << "WrongAnimal " << _type << " constructor called!" << std::endl;
 	return ;
 }
 WrongAnimal::WrongAnimal(const WrongAnimal& other) {
@@ -35,15 +35,15 @@ WrongAnimal::~WrongAnimal(void) {
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &other) {
 	if (this == &other)
 		return (*this);
-	type = other.type;
+	_type = other._type;
 	return (*this);
 }
 
 // Member functions
 std::string	WrongAnimal::getType(void) const {
-	return (type);
+	return (_type);
 }
 void		WrongAnimal::makeSound(void) const {
-	std::cout << "WrongAnimal " << type << " says: \"...\"" << std::endl;
+	std::cout << "WrongAnimal " << _type << " says: \"...\"" << std::endl;
 	return ;
 }
