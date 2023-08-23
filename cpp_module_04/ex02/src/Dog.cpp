@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:28:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 11:15:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:25:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ Dog::Dog(void) : AAnimal("Dog") {
 	return ;
 }
 Dog::Dog(const Dog& other) : AAnimal(other) {
-	*this = other;
+	if (this == &other)
+		return ;
+	_type = other._type;
+	_brain = new Brain(*other._brain);
 	std::cout << "Dog copy constructed!" << std::endl;
 	return ;
 }

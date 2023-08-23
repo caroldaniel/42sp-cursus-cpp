@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:37:30 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 11:17:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:25:46 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,35 @@ const std::string YELLOW = "\033[33m";
 
 int	main(void) {
 	std::cout << std::endl << YELLOW << "-------- Create Dog --------" << RESET << std::endl << std::endl;
-	const Dog *dog = new Dog();
+	const Dog* j = new Dog();
 
 	std::cout << std::endl << YELLOW << "-------- Create Cat --------" << RESET << std::endl << std::endl;
-	const Cat *cat = new Cat();
+	const Cat* i = new Cat();
+
+	std::cout << std::endl << YELLOW << "-------- Make Sounds --------" << RESET << std::endl << std::endl;
+	j->makeSound();
+	i->makeSound();
+
+	std::cout << std::endl << YELLOW << "-------- Create copies --------" << RESET << std::endl << std::endl;
+	Dog* copy_dog = new Dog(*((Dog*)j));
+	Cat* copy_cat = new Cat(*((Cat*)i));
+
+	std::cout << std::endl << YELLOW << "-------- Delete Copies --------" << RESET << std::endl << std::endl;
+	delete copy_dog;
+	delete copy_cat;
+	
+	std::cout << std::endl << YELLOW << "-------- Assign Operator (Shallow) --------" << RESET << std::endl << std::endl;
+	// assignation operator
+	copy_dog = (Dog*)j;
+	copy_cat = (Cat*)i;	
+	copy_dog->makeSound();
+	copy_cat->makeSound();
 	
 	std::cout << std::endl << YELLOW << "-------- Delete Dog --------" << RESET << std::endl << std::endl;
-	delete dog; //should not create a leak
+	delete j; //should not create a leak
 	
 	std::cout << std::endl << YELLOW << "-------- Delete Cat --------" << RESET << std::endl << std::endl;
-	delete cat; //should not create a leak
+	delete i; //should not create a leak
 	
 	return (0);
 }
