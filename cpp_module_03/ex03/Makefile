@@ -3,21 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/22 14:23:56 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/23 19:41:43 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= DiamondTrap
 
 OBJ_PATH	=./obj/
-SRC_PATH	=./src/
-INC_PATH	=./inc/
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wshadow -I $(INC_PATH)
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 RM			= rm -rf
 
@@ -26,8 +24,6 @@ SRC 		= main.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp \
 			DiamondTrap.cpp
-
-VPATH		= $(SRC_PATH) 
 
 OBJ 		= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.cpp=.o)))
 
@@ -55,7 +51,7 @@ fclean:		clean
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
 
 leak:		all
-			valgrind --leak-check=full --track-origins=yes ./${NAME} ERROR
+			valgrind --leak-check=full --track-origins=yes ./${NAME}
 
 # Colors
 CY			= \033[36;1m
