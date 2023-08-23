@@ -3,25 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/22 15:32:55 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/23 19:25:45 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= ClapTrap
 
 OBJ_PATH	=./obj/
-SRC_PATH	=./src/
-INC_PATH	=./inc/
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98 -I $(INC_PATH)
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 RM			= rm -rf
-
-VPATH		= $(SRC_PATH) 
 
 SRC 		= main.cpp \
 			ClapTrap.cpp
@@ -52,7 +48,7 @@ fclean:		clean
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
 
 leak:		all
-			valgrind --leak-check=full --track-origins=yes ./${NAME} ERROR
+			valgrind --leak-check=full --track-origins=yes ./${NAME}
 
 # Colors
 CY			= \033[36;1m
