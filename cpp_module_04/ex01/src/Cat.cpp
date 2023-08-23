@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:30:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/22 18:25:54 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:18:51 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Cat::~Cat(void) {
 Cat	&Cat::operator=(const Cat& other) {
 	if (this == &other)
 		return (*this);
-	type = other.type;
+	_type = other._type;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:28:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/22 18:25:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:18:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Dog::~Dog(void) {
 Dog	&Dog::operator=(const Dog& other) {
 	if (this == &other)
 		return (*this);
-	type = other.type;
+	_type = other._type;
 	return (*this);
 }
 
