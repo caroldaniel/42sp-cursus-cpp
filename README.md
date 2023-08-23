@@ -58,3 +58,9 @@ The project
 	<p>The fifth module takes a deeper dive into polymorphism, abstract classes and interfaces</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Polymorphism-in-CPP">Polymorphism in C++</a> </p>
 </details>
+
+<details>
+	<summary>CPP Module 05 <b>(-/100)</b></summary>
+	<p>We're now officially closer to the end than at the beggining of our CPP journey. Now, we're diving deeper into error handling, exceptions and subclasses</p>
+	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Exceptions-in-CPP">Exceptions in C++</a> </p>
+</details>
