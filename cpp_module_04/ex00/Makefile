@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/23 14:52:47 by cado-car         ###   ########.fr        #
+#    Updated: 2023/08/23 14:55:40 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,6 @@ CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 RM			= rm -rf
-
-VPATH		= $(SRC_PATH) 
 
 SRC 		= main.cpp \
 			Animal.cpp \
