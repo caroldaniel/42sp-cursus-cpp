@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:09:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 22:08:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:27:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,22 @@ std::ostream	&operator<<(std::ostream &out, const Form &form) {
 	return (out);
 }
 
-// Member functions
-std::string const	&Form::getName(void) const {
+// Getters
+std::string	Form::getName(void) const {
 	return (_name);
 }
-bool				Form::getSigned(void) const {
+bool		Form::getSigned(void) const {
 	return (_signed);
 }
-int					Form::getGradeToSign(void) const {
+int			Form::getGradeToSign(void) const {
 	return (_grade_to_sign);
 }
-int					Form::getGradeToExecute(void) const {
+int			Form::getGradeToExecute(void) const {
 	return (_grade_to_execute);
 }
-void				Form::beSigned(const Bureaucrat &bureaucrat) {
+
+// Member functions
+void		Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > _grade_to_sign)
 		throw Form::GradeTooLowException();
 	else

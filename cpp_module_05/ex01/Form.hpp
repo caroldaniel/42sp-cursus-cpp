@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:07:27 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 22:07:57 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:26:35 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,15 @@ public:
 	Form(std::string name, int grade_to_sign, int grade_to_execute);
 	Form(const Form &source);
 	~Form(void);
-
-	// Operator overloads
+	// Assignment Operator overload
 	Form	&operator=(const Form &other);
-	friend std::ostream	&operator<<(std::ostream &out, const Form &form);
-
+	// Getters
+	std::string	getName(void) const;
+	bool		getSigned(void) const;
+	int			getGradeToSign(void) const;
+	int			getGradeToExecute(void) const;
 	// Member functions
-	std::string const	&getName(void) const;
-	bool				getSigned(void) const;
-	int					getGradeToSign(void) const;
-	int					getGradeToExecute(void) const;
-	void				beSigned(const Bureaucrat &bureaucrat);
-
+	void		beSigned(Bureaucrat &bureaucrat);	
 	// Exceptions
 	class GradeTooHighException : public std::exception {
 		virtual const char *what() const throw();
@@ -58,5 +55,8 @@ public:
 		virtual const char *what() const throw();
 	};
 };
+
+// Overload << operator for output
+std::ostream	&operator<<(std::ostream &os, const Form &form);
 
 #endif
