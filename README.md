@@ -48,13 +48,13 @@ The project
 </details>
 
 <details>
-	<summary>CPP Module 03 <b>(-/100)</b></summary>
+	<summary>CPP Module 03 <b>(100/100)</b></summary>
 	<p>The fourth module is all about inheritance and all of its challenges and perks.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Inheritance-in-CPP">Inheritance in C++</a> </p>
 </details>
 
 <details>
-	<summary>CPP Module 04 <b>(-/100)</b></summary>
+	<summary>CPP Module 04 <b>(100/100)</b></summary>
 	<p>The fifth module takes a deeper dive into polymorphism, abstract classes and interfaces</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Polymorphism-in-CPP">Polymorphism in C++</a> </p>
 </details>
