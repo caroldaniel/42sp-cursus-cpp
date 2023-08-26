@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:20:30 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/26 15:06:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:22:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 class Bureaucrat
 {
 private:
+	static int const	_max_grade = 1;
+	static int const	_min_grade = 150;
 	std::string const	_name;
 	int					_grade;
 public:

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:31:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/26 15:11:13 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:23:35 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ Bureaucrat::Bureaucrat(void) {
 	return ;
 }
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
-	if (grade < 1)
+	if (grade < _max_grade)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade > 150)
+	else if (grade > _min_grade)
 		throw Bureaucrat::GradeTooLowException();
 	else
-		this->_grade = grade;
+		_grade = grade;
 	return ;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &source) : _name(source._name) {
@@ -37,30 +37,30 @@ Bureaucrat::~Bureaucrat(void) {
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &source) {
 	if (this == &source)
 		return (*this);
-	this->_grade = source._grade;
+	_grade = source._grade;
 	return (*this);
 }
 
 // Getters
 std::string	Bureaucrat::getName(void) const {
-	return (this->_name);
+	return (_name);
 }
 int			Bureaucrat::getGrade(void) const {
-	return (this->_grade);
+	return (_grade);
 }
 
 // Member functions
 void		Bureaucrat::incrementGrade(void) {
-	if (this->_grade - 1 < 1)
+	if (_grade - 1 < _max_grade)
 		throw Bureaucrat::GradeTooHighException();
 	else
-		this->_grade--;
+		_grade--;
 }
 void		Bureaucrat::decrementGrade(void) {
-	if (this->_grade + 1 > 150)
+	if (_grade + 1 > _min_grade)
 		throw Bureaucrat::GradeTooLowException();
 	else
-		this->_grade++;
+		_grade++;
 }
 
 // Exception classes
