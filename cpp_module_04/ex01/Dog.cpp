@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:28:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 12:08:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:20:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Dog	&Dog::operator=(const Dog& other) {
 	if (this == &other)
 		return (*this);
 	_type = other._type;
+	_brain = new Brain(*other._brain);
 	return (*this);
 }
 

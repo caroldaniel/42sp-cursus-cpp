@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:30:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/23 12:08:05 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:19:09 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Cat	&Cat::operator=(const Cat& other) {
 	if (this == &other)
 		return (*this);
 	_type = other._type;
+	_brain = new Brain(*other._brain);
 	return (*this);
 }
 
