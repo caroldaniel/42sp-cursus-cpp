@@ -68,6 +68,6 @@ The project
 <details>
 	<summary>CPP Module 06 <b>(-/100)</b></summary>
 	<p>Now things start to get a little bit tense. The lists might be getting shorter, but do not be fooled!</p>
-	<p>We're gonna be focusing on type casting, and a whole lot of thinking. I'm talkint low-level stuff.</p>
+	<p>We're gonna be focusing on type casting, and a whole lot of thinking in a not-so-new low-level mentality. Keep going though, 'cause you're almost there. </p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Type-Casting-in-CPP">Type Casting in C++</a> </p>
 </details>
