@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:31:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 14:57:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:02:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		Bureaucrat::decrementGrade(void) {
 void		Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
-		std::cout << GREEN << _name << RESET << " signs " << GREEN << form.getName() << RESET << "." << std::endl;
+		std::cout << GREEN << _name << RESET << " signed " << GREEN << form.getName() << RESET << "." << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << RED << _name << RESET << " couldn't sign " << RED << form.getName() << RESET << " because " << RED << e.what() << RESET << std::endl;
