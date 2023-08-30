@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:09:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 14:58:14 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:00:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ Form	&Form::operator=(const Form &other) {
 	_signed = other._signed;
 	return (*this);
 }
-std::ostream	&operator<<(std::ostream &out, const Form &form) {
-	out << GREEN << form.getName() << RESET << ", form grade to sign " << YELLOW << form.getGradeToSign() << RESET << ", form grade to execute " << YELLOW << form.getGradeToExecute() << RESET << ".";
-	return (out);
-}
 
 // Getters
 std::string	Form::getName(void) const {
@@ -75,4 +71,10 @@ const char *Form::GradeTooHighException::what() const throw() {
 }
 const char *Form::GradeTooLowException::what() const throw() {
 	return (RED "Grade too low!" RESET);
+}
+
+// Stream operator overload
+std::ostream	&operator<<(std::ostream &out, const Form &form) {
+	out << GREEN << form.getName() << RESET << ", form grade to sign " << YELLOW << form.getGradeToSign() << RESET << ", form grade to execute " << YELLOW << form.getGradeToExecute() << RESET << ".";
+	return (out);
 }
