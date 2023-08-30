@@ -6,14 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:37:44 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/28 16:50:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:15:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 int main(void) {
-    std::cout << std::endl << "----- RobotomyCreationForm : #1 -----" << std::endl;
+   std::cout << std::endl << YELLOW << "------ RobotomyCreationForm : #1 ------" << RESET << std::endl;
     try {
         Intern someRandomIntern;
         AForm* rrf;
@@ -24,7 +24,7 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << std::endl << "----- PresidentialPardonForm : #2 -----" << std::endl;
+    std::cout << std::endl << YELLOW << "------ PresidentialPardonForm : #2 ------" << RESET << std::endl;
     try {
         Intern someRandomIntern;
         AForm* ppf;
@@ -35,7 +35,7 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << std::endl << "----- ShrubberyCreationForm : #3 -----" << std::endl;
+    std::cout << std::endl << YELLOW << "------ ShrubberyCreationForm : #3 ------" << RESET << std::endl;
     try {
         Intern someRandomIntern;
         AForm* scf;
@@ -46,7 +46,7 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << std::endl << "----- AnyForm : Error #1 -----" << std::endl;
+    std::cout << std::endl << YELLOW << "------ AnyForm : Error ------" << RESET << std::endl;
     try {
         Intern someRandomIntern;
         AForm* scf;

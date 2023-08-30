@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:12:11 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/28 16:47:43 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:14:45 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ AForm* Intern::makeForm(std::string name, std::string target) {
             throw Intern::FormNotFoundException();
             return (NULL);
     }
-    std::cout << "Intern creates " << form->getName() << std::endl;
+    std::cout << YELLOW << "Intern" << RESET << " creates " << GREEN << form->getName() << RESET << std::endl;
     return (form);
 }
 
 // Exceptions
 const char* Intern::FormNotFoundException::what() const throw() {
-    return (RED "Form not found" RESET);
+    return (RED "Type of form specified cannot be created. Please, try creating a different form." RESET);
 }
