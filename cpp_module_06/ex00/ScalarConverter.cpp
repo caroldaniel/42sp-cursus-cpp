@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:53:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 19:25:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:28:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ bool ScalarConverter::_isDouble(const std::string &literal) {
 
 // Member functions for converting
 char ScalarConverter::_toChar(const std::string &literal) {
-    if (literal[1] < 32 || literal[1] > 126)
+    if (literal[1] <= 32 || literal[1] > 126)
         throw NonDisplayableException();
     return(literal[1]);
 }
