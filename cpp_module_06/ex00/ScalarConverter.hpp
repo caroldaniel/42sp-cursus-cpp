@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:07:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 19:15:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:10:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define RED		"\e[31m"
 # define GREEN		"\e[32m"
 # define YELLOW		"\e[33m"
+# define BLUE		"\e[34m"
+# define MAGENTA	"\e[35m"
+# define CYAN		"\e[36m"
 
 // Enumerators
 enum e_type {

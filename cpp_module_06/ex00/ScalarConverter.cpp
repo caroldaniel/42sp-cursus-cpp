@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:53:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 19:28:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:16:24 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ void ScalarConverter::convert(const std::string &literal) {
         switch (type)
         {
         case CHAR:
-            std::cout << "char: " << _toChar(literal) << std::endl;
+            std::cout << BLUE << "Char: '" << RESET << _toChar(literal) << "'"<< std::endl;
             break;
         case INT:
-            std::cout << "int: " << _toInt(literal) << std::endl;
+            std::cout << YELLOW << "Int: " << RESET << _toInt(literal) << std::endl;
             break;
         case FLOAT:
-            std::cout << "float: " << _toFloat(literal) << std::endl;
+            std::cout << MAGENTA << "Float: " << RESET << _toFloat(literal) << "f" << std::endl;
             break;
         case DOUBLE:
-            std::cout << "double: " << _toDouble(literal) << std::endl;
+            std::cout << CYAN << "Double: " << RESET << _toDouble(literal) << std::endl;
             break;
         default:
             throw InvalidLiteralException();
