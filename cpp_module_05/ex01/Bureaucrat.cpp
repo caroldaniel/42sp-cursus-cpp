@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:31:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/26 15:31:29 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:57:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 
 // Stream operator overload
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
-	os << YELLOW << bureaucrat.getName() << RESET << ", bureaucrat grade " << GREEN << bureaucrat.getGrade() << RESET << "." << std::endl;
+	os << YELLOW << bureaucrat.getName() << RESET << ", bureaucrat grade " << GREEN << bureaucrat.getGrade() << RESET << ".";
 	return (os);
 }

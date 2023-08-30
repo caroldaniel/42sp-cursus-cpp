@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:09:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/26 15:27:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:58:14 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Form	&Form::operator=(const Form &other) {
 	return (*this);
 }
 std::ostream	&operator<<(std::ostream &out, const Form &form) {
-	out << GREEN << form.getName() << RESET << ", form grade to sign " << YELLOW << form.getGradeToSign() << RESET << ", form grade to execute " << YELLOW << form.getGradeToExecute() << RESET << "." << std::endl;
+	out << GREEN << form.getName() << RESET << ", form grade to sign " << YELLOW << form.getGradeToSign() << RESET << ", form grade to execute " << YELLOW << form.getGradeToExecute() << RESET << ".";
 	return (out);
 }
 
