@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 18:54:10 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/26 19:31:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:05:14 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void) {
 }
 
 static void	test_schrubbery(void) {
-	std::cout << std::endl << "----- ShrubberyCreationForm : #1 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ ShrubberyCreationForm : #1 ------" << RESET << std::endl;
 	try {
 		ShrubberyCreationForm form("Alice");
 		Bureaucrat bureaucrat("John", 1);
@@ -39,7 +39,7 @@ static void	test_schrubbery(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- ShrubberyCreationForm : #2 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ ShrubberyCreationForm : #2 ------" << RESET << std::endl;
 		try {
 		ShrubberyCreationForm form("Betty");
 		Bureaucrat bureaucrat("Nick", 140);
@@ -51,7 +51,7 @@ static void	test_schrubbery(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- ShrubberyCreationForm : #3 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ ShrubberyCreationForm : #3 ------" << RESET << std::endl;
 	try {
 		ShrubberyCreationForm form("Carla");
 		Bureaucrat bureaucrat("Evan", 150);
@@ -66,7 +66,7 @@ static void	test_schrubbery(void) {
 }
 
 static void	test_robotomy(void) {
-	std::cout << std::endl << "----- RobotomyCreationForm : #1 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ RobotomyCreationForm : #1 ------" << RESET << std::endl;
 	try {
 		RobotomyRequestForm form("Alice");
 		Bureaucrat bureaucrat("John", 1);
@@ -78,7 +78,7 @@ static void	test_robotomy(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- RobotomyCreationForm : #2 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ RobotomyCreationForm : #2 ------" << RESET << std::endl;
 		try {
 		RobotomyRequestForm form("Betty");
 		Bureaucrat bureaucrat("Nick", 60);
@@ -90,7 +90,7 @@ static void	test_robotomy(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- RobotomyCreationForm : #3 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ RobotomyCreationForm : #3 ------" << RESET << std::endl;
 	try {
 		RobotomyRequestForm form("Carla");
 		Bureaucrat bureaucrat("Evan", 150);
@@ -105,7 +105,7 @@ static void	test_robotomy(void) {
 }
 
 static void	test_presidential(void) {
-	std::cout << std::endl << "----- PresidentialPardonForm : #1 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ PresidentialPardonForm : #1 ------" << RESET << std::endl;
 	try {
 		PresidentialPardonForm form("Alice");
 		Bureaucrat bureaucrat("John", 1);
@@ -117,7 +117,7 @@ static void	test_presidential(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- PresidentialPardonForm : #2 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ PresidentialPardonForm : #2 ------" << RESET << std::endl;
 		try {
 		PresidentialPardonForm form("Betty");
 		Bureaucrat bureaucrat("Nick", 15);
@@ -129,7 +129,7 @@ static void	test_presidential(void) {
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- PresidentialPardonForm : #3 -----" << std::endl;
+	std::cout << std::endl << YELLOW << "------ PresidentialPardonForm : #3 ------" << RESET << std::endl;
 	try {
 		PresidentialPardonForm form("Carla");
 		Bureaucrat bureaucrat("Evan", 150);
