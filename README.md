@@ -77,3 +77,9 @@ The project
 	<p>Let's talk about templates! A simple, yet so powerfull tool</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/Templates-in-CPP">Templates in C++</a> </p>
 </details>
+
+<details>
+	<summary>CPP Module 08 <b>(-/100)</b></summary>
+	<p>Now we've finally reached containers! This module might look like a lot (and it is!) but it certainly takes your C++ knowledge to a whole new level.</p>
+	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/The-Standard-Library-in-CPP">The Standard Library in C++</a> </p>
+</details>
