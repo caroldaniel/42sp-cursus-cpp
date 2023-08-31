@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:53:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 20:16:24 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:33:00 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ bool ScalarConverter::_isChar(const std::string &literal) {
 bool ScalarConverter::_isInt(const std::string &literal) {
     size_t  len = literal.length();
 
+    if (literal.length() == 1 && !std::isdigit(literal[0]))
+        return (true);
     for (size_t i = 0; i < len; i++) {
         if (i == 0 && (literal[i] == '-' || literal[i] == '+'))
             continue ;
@@ -132,6 +134,8 @@ char ScalarConverter::_toChar(const std::string &literal) {
     return(literal[1]);
 }
 int ScalarConverter::_toInt(const std::string &literal) {
+    if (literal.length() == 1 && !std::isdigit(literal[0]))
+        return (static_cast<int>(literal[0]));
     return (std::atoi(literal.c_str()));
 }
 float ScalarConverter::_toFloat(const std::string &literal) {
