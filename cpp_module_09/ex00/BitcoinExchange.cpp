@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:03:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 17:18:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:36:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,26 +99,22 @@ void BitcoinExchange::readInput(std::string filename) {
     std::string value;
     float fvalue;
 
-    try {
-        if (!file.is_open())
-            throw InputNotFoundException();
-        std::getline(file, line);
-        if (filename.substr(filename.find_last_of(".") + 1) != "txt" || !_checkHeader(line, INPUT))
-            throw BadInputFormatException();
-        while (std::getline(file, line)) {
-            try {
-                _checkLine(line, INPUT);
-            } catch (std::exception &e) {
-                std::cout << "Error: " << e.what() << std::endl;
-                continue ;
-            }
-            date = line.substr(0, line.find('|'));
-            value = line.substr(line.find('|') + 1);
-            fvalue = std::atof(value.c_str());
-            _btc(date, fvalue);
+    if (!file.is_open())
+        throw InputNotFoundException();
+    std::getline(file, line);
+    if (filename.substr(filename.find_last_of(".") + 1) != "txt" || !_checkHeader(line, INPUT))
+        throw BadInputFormatException();
+    while (std::getline(file, line)) {
+        try {
+            _checkLine(line, INPUT);
+        } catch (std::exception &e) {
+            std::cout << "Error: " << e.what() << std::endl;
+            continue ;
         }
-    } catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
+        date = line.substr(0, line.find('|'));
+        value = line.substr(line.find('|') + 1);
+        fvalue = std::atof(value.c_str());
+        _btc(date, fvalue);
     }
 }
 

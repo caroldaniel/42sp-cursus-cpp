@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 11:22:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 17:07:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:34:24 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 int main(int argc, char **argv)
 {
     if (argc != 2) {
-        std::cout << RED "Error: invalid number of arguments." RESET << std::endl;
+        std::cerr << RED "Error: invalid number of arguments." RESET << std::endl;
         return (1);
     }
     BitcoinExchange btc;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
         btc.loadDatabase();
         btc.readInput(argv[1]);
     } catch (std::exception &e) {
-        std::cout << RED << e.what() << RESET << std::endl;
+        std::cerr << RED << e.what() << RESET << std::endl;
         return (1);
     }
     return (0);
