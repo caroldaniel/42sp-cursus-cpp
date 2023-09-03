@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 11:22:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 17:34:24 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:39:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,20 @@
 ** • A valid value must be either a float or a positive integer, between 0 and 1000.
 */
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
+    BitcoinExchange btc;
+    
     if (argc != 2) {
         std::cerr << RED "Error: invalid number of arguments." RESET << std::endl;
         return (1);
-    }
-    BitcoinExchange btc;
-    try {
-        btc.loadDatabase();
-        btc.readInput(argv[1]);
-    } catch (std::exception &e) {
-        std::cerr << RED << e.what() << RESET << std::endl;
-        return (1);
+    } else {
+        try {
+            btc.loadDatabase();
+            btc.readInput(argv[1]);
+        } catch (std::exception &e) {
+            std::cerr << RED << e.what() << RESET << std::endl;
+            return (1);
+        }        
     }
     return (0);
 }
