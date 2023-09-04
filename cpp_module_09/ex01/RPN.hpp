@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:42:37 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 22:45:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:28:53 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ class RPNEvaluator
 {
 private:
     // Attributes
-    std::stack<std::string> _expression;
     std::stack<double> _operands;
     // Member functions
-    void _tokenize(std::string expression);
-    bool _isOperator(char c);
-    bool _isOperand(char c);    
+    bool _isOperator(std::string token);
+    bool _isOperand(std::string token);
+    void _doOperation(char op);
 public:
     // Constructors and destructor
     RPNEvaluator();

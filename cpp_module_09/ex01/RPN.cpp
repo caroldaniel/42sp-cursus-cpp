@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:42:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 22:55:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:33:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,44 +49,23 @@ RPNEvaluator &RPNEvaluator::operator=(RPNEvaluator const &src) {
 ** Evaluates the expression passed as parameter and gives back the result.
 */
 double RPNEvaluator::evaluate(std::string expression) {
-    _tokenize(expression);
-    while (!_expression.empty()) {
-        if (_isOperand(_expression.top()[0]))
-            _operands.push(std::strtod(this->_expression.top().c_str(), NULL));
-        else if (_isOperator(this->_expression.top()[0])) {
-            char op = this->_expression.top()[0];
-            if (this->_operands.size() < 2)
-                throw EvaluateErrorException("Invalid expression.");
-            double op1 = _operands.top();
-            _operands.pop();
-            double op2 = _operands.top();
-            _operands.pop();
-            switch (op) {
-                case '+':
-                    _operands.push(op1 + op2);
-                    break;
-                case '-':
-                    _operands.push(op1 - op2);
-                    break;
-                case '*':
-                    _operands.push(op1 * op2);
-                    break;
-                case '/':
-                    _operands.push(op1 / op2);
-                    break;
-                case '%':
-                    _operands.push(fmod(op1, op2));
-                    break;
-                default:
-                    throw EvaluateErrorException("Invalid expression.");
-            } 
-        }
-        else
-            throw EvaluateErrorException("Invalid expression.");
-        this->_expression.pop();
-    }
-    return (0);
+    std::istringstream iss(expression);
+    std::string token;
 
+    while (iss >> token)
+    {
+        if (_isOperand(token))
+            _operands.push(std::strtod(token.c_str(), NULL));
+        else if (_isOperator(token))
+            try {
+                _doOperation(token.begin()[0]);
+            } catch (std::exception &e) {
+                throw EvaluateErrorException(e.what());
+            }
+        else
+            throw EvaluateErrorException("Error");       
+    }
+    return (_operands.top());
 }
 
 /*
@@ -94,8 +73,10 @@ double RPNEvaluator::evaluate(std::string expression) {
 ** -------------
 ** Checks if the character passed as parameter is an operator.
 */
-bool RPNEvaluator::_isOperator(char c) {
-    return (c == '+' || c == '-' || c == '*' || c == '/' || c == '%');
+bool RPNEvaluator::_isOperator(std::string token) {
+    if (token == "+" || token == "-" || token == "*" || token == "/")
+        return (true);
+    return (false);
 }
 
 /*
@@ -103,22 +84,58 @@ bool RPNEvaluator::_isOperator(char c) {
 ** ------------
 ** Checks if the character passed as parameter is an operand.
 */
-bool RPNEvaluator::_isOperand(char c) {
-    return (c >= '0' && c <= '9');
+bool RPNEvaluator::_isOperand(std::string token) {
+    int nb;
+
+    for (std::string::iterator it = token.begin(); it != token.end(); it++) {
+        if (!std::isdigit(*it))
+            return (false);
+    }
+    nb = std::atoi(token.c_str());
+    if (nb < 0 || nb > 9)
+        return (false);
+    return (true);        
 }
 
 /*
-** _tokenize()
-** -----------
-** Tokenizes the expression passed as parameter and saves the tokens in the rpn stack.
-** The tokens will be split by any whitespace character.
+** _doOperation()
+** --------------
+** Performs the operation passed as parameter on the two previous operands in the stack.
 */
-void RPNEvaluator::_tokenize(std::string expression) {
-    std::istringstream iss(expression);
-    std::string token;
-    
-    while (iss >> token)
-        _expression.push(token);
+void RPNEvaluator::_doOperation(char op) {
+    double result = 0;
+    double op1 = 0;
+    double op2 = 0;
+
+    if (_operands.size() < 2)
+        throw EvaluateErrorException("Error");
+    op2 = _operands.top();
+    _operands.pop();
+    op1 = _operands.top();
+    _operands.pop();
+    switch (op)
+    {
+    case '+':
+        result = op1 + op2;
+        break;
+    case '-':
+        result = op1 - op2;
+        break;
+    case '*':
+        result = op1 * op2;
+        break;
+    case '/':
+        if (op2 == 0){
+            throw EvaluateErrorException("Division by zero.");
+            return ;
+        }
+        result = op1 / op2;
+        break;
+    default:
+        throw EvaluateErrorException("Error");
+        return ;
+    }
+    _operands.push(result);
     return ;
 }
 
