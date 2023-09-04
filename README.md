@@ -83,3 +83,11 @@ The project
 	<p>Now we've finally reached containers! This module might look like a lot (and it is!) but it certainly takes your C++ knowledge to a whole new level.</p>
 	<p>Check the documentation page on this repo's wiki on <a href="https://github.com/caroldaniel/42sp-cursus-cpp/wiki/The-Standard-Library-in-CPP">The Standard Library in C++</a> </p>
 </details>
+
+<details>
+	<summary>CPP Module 09 <b>(-/100)</b></summary>
+	<p>THis is the big, cathartic moment we've all being waiting for. There's nothing particularly new about this list, except it's really freaking hard from the get go. The three exercises on this list are supposed to be fully functional programs, with very defined scopes. Let's dive into them one by one: this time, there's no use for a single wiki page, so I'm gonna do it differently: three README files, one in it's respective list repositories.</p>
+	<p>Check the <a href="https://github.com/caroldaniel/42sp-cursus-cpp/tree/main/cpp_module_09/ex00">ex00 README.md</a> </p>
+	<p>Check the <a href="https://github.com/caroldaniel/42sp-cursus-cpp/tree/main/cpp_module_09/ex01">ex01 README.md</a> </p>
+	<p>Check the <a href="https://github.com/caroldaniel/42sp-cursus-cpp/tree/main/cpp_module_09/ex02">ex02 README.md</a> </p>
+</details>
