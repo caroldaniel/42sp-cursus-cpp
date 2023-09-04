@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 18:50:44 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 17:18:56 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:35:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,38 @@ enum file_type {
 // BitcoinExchange "static" class - non-instantiable
 class BitcoinExchange {
 private:
+    // Copy constructor and assignment operator
+    BitcoinExchange(BitcoinExchange const &src);
+    BitcoinExchange &operator=(BitcoinExchange const &src);
     // Attributes
     std::map<std::string, float> _database;
+    std::string _min_date;
+    std::string _max_date;
     // Member functions
+    void _loadDatabase(void);    
     void _btc(std::string date, float value);
     bool _checkHeader(std::string line, file_type type);
     void _checkLine(std::string line, file_type type);
-    bool _checkDate(std::string date);
-    bool _checkValue(std::string value);
+    bool _checkDate(std::string date, file_type type);
+    bool _checkValue(std::string value, file_type type);
     void _trimCell(std::string &cell);
 
 public:
     // Constructors and destructor
     BitcoinExchange(void);
-    BitcoinExchange(BitcoinExchange const &src);
     ~BitcoinExchange(void);
-
-    // Operator overloads
-    BitcoinExchange &operator=(BitcoinExchange const &src);
-
     // Member functions
-    void loadDatabase(void);
     void readInput(std::string filename);
 
     // Exception classes
+    class DatabaseLoadException : public std::exception {
+        public:
+            DatabaseLoadException(std::string error_message);
+            virtual ~DatabaseLoadException(void) throw() {};
+            virtual const char *what() const throw();
+        private:
+            std::string _error_message;
+    };
     class DatabaseNotFoundException : public std::exception {
         virtual const char *what() const throw();
     };
@@ -90,6 +98,14 @@ public:
         public:
             BadInputDataException(std::string line);
             virtual ~BadInputDataException(void) throw() {};
+            virtual const char *what() const throw();
+        private:
+            std::string _error_message;
+    };
+    class BadDateException : public std::exception {
+        public:
+            BadDateException(std::string date);
+            virtual ~BadDateException(void) throw() {};
             virtual const char *what() const throw();
         private:
             std::string _error_message;

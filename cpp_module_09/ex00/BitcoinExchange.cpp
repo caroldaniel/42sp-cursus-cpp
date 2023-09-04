@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:03:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/03 17:36:21 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:33:45 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 ** Default constructor
 */
 BitcoinExchange::BitcoinExchange(void) : _database() {
+    try {
+        _loadDatabase();
+    } catch (std::exception &e) {
+        throw DatabaseLoadException(e.what());
+    }
+    _min_date = _database.begin()->first;
+    _max_date = _database.rbegin()->first;
     return ;
 }
 
@@ -43,14 +50,14 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &src) {
 }
 
 /*
-** loadDatabase()
+** _loadDatabase()
 ** ---------------
 ** Loads the database file into the _database map.
 ** The database file must have the following format:
 ** date,exchange_rate
 ** where `date` is a string in the format YYYY-MM-DD, and `exchange_rate` is a float.
 */
-void BitcoinExchange::loadDatabase(void) {
+void BitcoinExchange::_loadDatabase(void) {
     std::string filename = DATA_FILE;
     std::ifstream file(filename.c_str());
     std::string line;
@@ -63,13 +70,14 @@ void BitcoinExchange::loadDatabase(void) {
         return ;
     }
     std::getline(file, line);
-    if (filename.substr(filename.find_last_of(".") + 1) != "csv" || !_checkHeader(line, DATABASE))
+    if (!_checkHeader(line, DATABASE))
         throw BadDatabaseFormatException();
     else {
         while (std::getline(file, line)) {
             try {
                 _checkLine(line, DATABASE);   
             } catch (std::exception &e) {
+                std::cout << "Error: " << e.what() << std::endl;
                 throw BadDatabaseFormatException();
                 break ;
             }
@@ -102,7 +110,7 @@ void BitcoinExchange::readInput(std::string filename) {
     if (!file.is_open())
         throw InputNotFoundException();
     std::getline(file, line);
-    if (filename.substr(filename.find_last_of(".") + 1) != "txt" || !_checkHeader(line, INPUT))
+    if (!_checkHeader(line, INPUT))
         throw BadInputFormatException();
     while (std::getline(file, line)) {
         try {
@@ -198,22 +206,17 @@ void BitcoinExchange::_checkLine(std::string line, file_type type) {
     _trimCell(value);
     if (!date.length() || !value.length())
         throw BadInputDataException(line);
-    else if (!_checkDate(date))
-        throw BadInputDataException(line);
-    else if (!_checkValue(value)) {
-        float fvalue;
-        try {
-            fvalue = std::atof(value.c_str());
-        } catch (std::exception &e) {
+    else if (!_checkDate(date, type))
+        throw BadDateException(date);
+    else if (!_checkValue(value, type)) { 
+        if (std::atof(value.c_str()) < 0)
+            throw NegativeValueException();
+        else if (std::atof(value.c_str()) > 1000)
+            throw TooLargeValueException();
+        else
             throw BadInputDataException(line);
-        }
-        if (type == INPUT) {
-            if (fvalue < 0)
-                throw NegativeValueException();
-            else if (fvalue > 1000)
-                throw TooLargeValueException();
-        }
     }
+    return ;
 }
 
 /*
@@ -221,7 +224,7 @@ void BitcoinExchange::_checkLine(std::string line, file_type type) {
 ** ------------
 ** Checks if the date is in the right format (YYYY-MM-DD).
 */
-bool BitcoinExchange::_checkDate(std::string date) {
+bool BitcoinExchange::_checkDate(std::string date, file_type type) {
     if (date.length() != 10)
         return (false);
     for (int i = 0; i < 10; i++) {
@@ -231,13 +234,12 @@ bool BitcoinExchange::_checkDate(std::string date) {
         } else if (!std::isdigit(date[i]))
             return (false);
     }
-    int year = std::atoi(date.substr(0, 4).c_str());
-    int month = std::atoi(date.substr(5, 2).c_str());
-    int day = std::atoi(date.substr(8, 2).c_str());
-    if (year < 2008 || year > 2023)
+    if (type == INPUT && date < _min_date)
         return (false);
+    int month = std::atoi(date.substr(5, 2).c_str());
     if (month < 1 || month > 12)
         return (false);
+    int day = std::atoi(date.substr(8, 2).c_str());
     if (day < 1)
         return (false);
     if (month == 2 && day > 29)
@@ -254,7 +256,7 @@ bool BitcoinExchange::_checkDate(std::string date) {
 ** -------------
 ** Checks if the value is a positive float or integer.
 */
-bool BitcoinExchange::_checkValue(std::string value) {
+bool BitcoinExchange::_checkValue(std::string value, file_type type) {
     bool dot = false;
 
     for (size_t i = 0; i < value.length(); i++) {
@@ -266,10 +268,9 @@ bool BitcoinExchange::_checkValue(std::string value) {
         else if (!std::isdigit(value[i]))
             return (false);
     }
-    float fvalue = std::atof(value.c_str());
-    if (fvalue < 0)
+    if (type == INPUT && std::atof(value.c_str()) > 1000)
         return (false);
-    else if (fvalue > 1000)
+    else if (type == INPUT && std::atof(value.c_str()) < 0)
         return (false);
     return (true);
 }
@@ -289,34 +290,44 @@ void BitcoinExchange::_trimCell(std::string &cell) {
 }
 
 /*
+** DatabaseLoadException class
+*/
+BitcoinExchange::DatabaseLoadException::DatabaseLoadException(std::string error_message) : _error_message(error_message) {
+    return ;
+}
+const char *BitcoinExchange::DatabaseLoadException::what() const throw() {
+    return (_error_message.c_str());
+}
+
+/*
 ** DatabaseNotFoundException class
 */
 const char *BitcoinExchange::DatabaseNotFoundException::what() const throw() {
-    return (RED "Database file not found. Please, make sure there is a `data.csv` file in the root of your repository." RESET);
+    return ("Database file not found. Please, make sure there is a `data.csv` file in the root of your repository.");
 }
 /*
 ** BadDatabaseHeaderException class
 */
 const char *BitcoinExchange::BadDatabaseFormatException::what() const throw() {
-    return (RED "Bad format in Database file. Please, make sure your database is a .csv with two columns: `date,exchange_rate`" RESET);
+    return ("Bad format in Database file. Please, make sure your database is a .csv with two columns: `date,exchange_rate`");
 }
 /*
 ** BadDatabaseFormatException class
 */
 const char *BitcoinExchange::BadDatabaseDataException::what() const throw() {
-    return (RED "Bad data in Database file. Please, make sure your databese is filled correctly." RESET);
+    return ("Bad data in Database file. Please, make sure your databese is filled correctly.");
 }
 /*
 ** InputNotFoundException class
 */
 const char *BitcoinExchange::InputNotFoundException::what() const throw() {
-    return (RED "Input file not found. Please, make sure your input file exists and has the right permissions." RESET);
+    return ("Input file not found. Please, make sure your input file exists and has the right permissions.");
 }
 /*
 ** BadInputFormatException class
 */
 const char *BitcoinExchange::BadInputFormatException::what() const throw() {
-    return (RED "Bad format in Input file. Please, make sure your input is a .txt with two columns: `date|value`" RESET);
+    return ("Bad format in Input file. Please, make sure your input is a .txt with two columns: `date|value`");
 }
 /*
 ** BadInputDataException class
@@ -325,6 +336,15 @@ BitcoinExchange::BadInputDataException::BadInputDataException(std::string line) 
     return ;
 }
 const char *BitcoinExchange::BadInputDataException::what() const throw() {
+    return (_error_message.c_str());
+}
+/*
+** BadDateException class
+*/
+BitcoinExchange::BadDateException::BadDateException(std::string date) : _error_message("bad date => " + date) {
+    return ;
+}
+const char *BitcoinExchange::BadDateException::what() const throw() {
     return (_error_message.c_str());
 }
 /*
