@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:42:37 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/04 17:28:53 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/05 10:49:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 # include <iomanip>
 # include <cmath>
 # include <stack>
+
+/*
+** Reverse Polish Notation Evaluator
+** ---------------------------------
+** This class is responsible for evaluating a mathematical expression in
+** Reverse Polish Notation (RPN). It uses a stack to store the operands and
+** perform the operations.
+** The class also has a nested exception class to handle errors.
+*/
 
 class RPNEvaluator
 {
