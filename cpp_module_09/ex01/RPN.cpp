@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:42:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/04 17:33:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/09 00:16:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ double RPNEvaluator::evaluate(std::string expression) {
         else
             throw EvaluateErrorException("Error");       
     }
+    if (_operands.size() != 1)
+        throw EvaluateErrorException("Error");
     return (_operands.top());
 }
 
