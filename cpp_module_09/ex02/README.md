@@ -106,7 +106,7 @@ So, what should we do with it? Well, after inserting `pend[0]` out front, you wi
 
 Do this forever, and you're good to go.
 
-There is, however, a catches, so pay attention:
+There is, however, a catch, so pay attention:
 
 Sometimes, the next Jacobsthal number is a number index that pend does not have. For example, in a pend list of 7 elements, the insertion order would be something like this: `[1, 3, 2, 5, 4, 11]` (only 6 elements here 'cause the `pend[0]` was already inserted, remember that). However, there's no index 11 in a list of 7 elements - it only goes to index 6. So the next jacobsthal number must be decreased until it makes sense. The same thing would happen if it was a list of 8 or 9 elements:
 
