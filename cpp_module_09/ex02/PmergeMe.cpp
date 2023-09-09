@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:02:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/08 11:23:14 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/08 21:57:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &rhs) {
 ** Sorts a vector of integers using the Ford-Johnson algorithm
 */
 void PmergeMe::sort(std::vector<int> &vector) {
+    // count number of elements
     if (vector.size() <= 1)
         return ;
     /*
@@ -84,6 +85,7 @@ void PmergeMe::sort(std::vector<int> &vector) {
     }
     if (straggler != -1)
         pend.push_back(straggler);
+
     /*
     ** Step #5: Insert the first pend element to the beginning of the sorted
     ** sequence.
@@ -93,16 +95,18 @@ void PmergeMe::sort(std::vector<int> &vector) {
     ** Step #6: Insert the pend elements into the sorted sequence using the
     ** generated insertion sequence.
     */
-    std::vector<int> insertion_order = generate_insertion_sequence<std::vector<int> >(pend.size());
-    for (size_t i = 0; i < pend.size() - 1; i++) {
-        int element = pend[insertion_order[i]];
-        if (element < sorted[0]) {
-            sorted.insert(sorted.begin(), element);
-        } else {
-            for (size_t j = 0; j < sorted.size(); j++) {
-                if (element > sorted[j] && (element < sorted[j + 1] || j == sorted.size() - 1)) {
-                    sorted.insert(sorted.begin() + j + 1, element);
-                    break ;
+    std::vector<int> insertion_order = generate_insertion_sequence<std::vector<int> >(pend.size() - 1);
+    if (insertion_order.size() != 0) {
+        for (size_t i = 0; i < pend.size() - 1; i++) {
+            int element = pend[insertion_order[i]];
+            if (element < sorted[0]) {
+                sorted.insert(sorted.begin(), element);
+            } else {
+                for (size_t j = 0; j < sorted.size(); j++) {
+                    if (element > sorted[j] && (element < sorted[j + 1] || j == sorted.size() - 1)) {
+                        sorted.insert(sorted.begin() + j + 1, element);
+                        break ;
+                    }
                 }
             }
         }
@@ -207,26 +211,28 @@ void PmergeMe::sort(std::list<int> &list) {
     ** generated insertion sequence.
     */
 
-    std::list<int> insertion_order = generate_insertion_sequence<std::list<int> >(pend.size());
-    for (std::list<int>::iterator it = insertion_order.begin(); it != insertion_order.end(); it++) {
-        int element_index = *it;
-        std::list<int>::iterator itp = pend.begin();
-        std::advance(itp, element_index);
-        int element = *itp;
-        if (element < sorted.front()) {
-            sorted.push_front(element);
-        } else {
-            std::list<int>::iterator current;
-            std::list<int>::iterator next;
-            for (std::list<int>::iterator its = sorted.begin(); its != sorted.end(); its++) {
-                current = its++;
-                next = its;
-                if (element > *current && (element < *next || its == sorted.end()))
-                    break ;
-                its = current;
+    std::list<int> insertion_order = generate_insertion_sequence<std::list<int> >(pend.size() - 1);
+    if (insertion_order.size() != 0) {
+        for (std::list<int>::iterator it = insertion_order.begin(); it != insertion_order.end(); it++) {
+            int element_index = *it;
+            std::list<int>::iterator itp = pend.begin();
+            std::advance(itp, element_index);
+            int element = *itp;
+            if (element < sorted.front()) {
+                sorted.push_front(element);
+            } else {
+                std::list<int>::iterator current;
+                std::list<int>::iterator next;
+                for (std::list<int>::iterator its = sorted.begin(); its != sorted.end(); its++) {
+                    current = its++;
+                    next = its;
+                    if (element > *current && (element < *next || its == sorted.end()))
+                        break ;
+                    its = current;
+                }
+                sorted.insert(next, element);
+                
             }
-            sorted.insert(next, element);
-            
         }
     }
     list = sorted;

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:47:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/08 11:27:09 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/08 22:03:57 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,22 +154,35 @@ int jacobsthal(int n);
 template <typename T>
 T generate_insertion_sequence(size_t size) {
     T sequence;
-    int jacobsthal_index = 2;
-    
-    sequence.push_back(jacobsthal(jacobsthal_index));
-    while (sequence.size() < size - 2) {
-        jacobsthal_index++;
-        sequence.push_back(jacobsthal(jacobsthal_index));
-        while (std::find(sequence.begin(), sequence.end(), sequence.back() - 1) == sequence.end()) {
-            sequence.push_back(sequence.back() - 1);
+    if (size < 1)
+        return (sequence);
+    int jacobsthal_iterator = 2;
+
+    /*
+    ** Step 1 : The sequence will start with the third number of the Jacobsthal sequence.
+    */
+    int next = jacobsthal(jacobsthal_iterator++);
+    sequence.push_back(next);
+
+    /*
+    ** Step 2 : If the next Jacobsthal number is greater or equal to the size, the next 
+    ** number will be the size. Otherwise, it will be the next Jacobsthal number. Then, 
+    ** you will proceed to decrement the last Jacobsthal number by 1, and insert it in
+    ** the sequence. Do it in a loop until you reach a number that is already in the
+    ** sequence.
+    */
+    while (sequence.size() < size) {
+        next = jacobsthal(jacobsthal_iterator++);
+        if (next >= static_cast<int>(size))
+            next = size;
+        while (sequence.size() < size && next > 0) {
+            sequence.push_back(next);
+            if (std::find(sequence.begin(), sequence.end(), next - 1) != sequence.end())
+                break ;
+            next--;
         }
     }
     return (sequence);
 }
-
-/*
-** Compare vectors
-*/
-
 
 #endif
