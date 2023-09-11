@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:53:33 by cado-car          #+#    #+#             */
-/*   Updated: 2023/09/11 12:18:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/11 20:48:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,17 @@ bool ScalarConverter::_isChar(const std::string &literal) {
     size_t  len = literal.length();
     
     if (literal[0] == '\'' && literal[len - 1] == '\'') {
-        if ((len == 3 && literal[1] > 31) || literal[1] < 127)
+        if (len == 3 && (literal[1] > 31 && literal[1] < 127))
             return (true);
         if (len == 4 && literal[1] == '\\')
-            if (literal[2] == 'n' || literal[2] == 't' || literal[2] == 'v' || literal[2] == 'b' || literal[2] == 'r' || literal[2] == 'f' || literal[2] == 'a' || literal[2] == '\\' || literal[2] == '0')
+            if (literal[2] == 'n' || literal[2] == 't' || literal[2] == 'v' || literal[2] == 'b' || literal[2] == 'r' || literal[2] == 'f' || literal[2] == 'a' || literal[2] == '\\' || literal[2] == '0' || literal[2] == 'e')
                 return (true);
-        if (len > 4 && literal[1] == '\\')
-            if (literal[2] == 'x' && std::isxdigit(literal[3]) && std::isxdigit(literal[4]))
-                return (true);
+        if (len > 4 && literal[1] == '\\') {
+			for (size_t i = 2; i < len - 1; i++)
+				if (literal[i] != 'x' && !std::isxdigit(literal[i]))
+					return (false);
+			return (true);
+		}
     }
     return (false);
 }

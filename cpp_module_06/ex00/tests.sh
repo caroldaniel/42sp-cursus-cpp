@@ -18,9 +18,6 @@ BOLD_CYAN="\033[1;36m"
 # Reset
 NC="\033[0m"
 
-# Make
-make re
-
 echo
 echo -e "${BOLD_CYAN}===================== TESTS =====================${NC}"
 
@@ -74,10 +71,10 @@ echo "./ScalarConverter '\\x0'"
 ./ScalarConverter "'\x0'"
 echo "./ScalarConverter '\\x0f'"
 ./ScalarConverter "'\x0f'"
-echo "./ScalarConverter \" \""
+echo "./ScalarConverter ' '"
 ./ScalarConverter "' '"
-echo "./ScalarConverter \"  \""
-./ScalarConverter "'    '"
+echo "./ScalarConverter '	'"
+./ScalarConverter "'	'"
 
 
 echo
@@ -115,23 +112,23 @@ echo
 echo -e "${BOLD_BLUE}Char tests----------------------------------------${NC}"
 
 # Test with char
-echo "./ScalarConverter \'A\'"
+echo "./ScalarConverter 'A'"
 ./ScalarConverter "'A'"
-echo "./ScalarConverter \'l\'"
+echo "./ScalarConverter 'l'"
 ./ScalarConverter "'l'"
-echo "./ScalarConverter \'e\'"
+echo "./ScalarConverter 'e'"
 ./ScalarConverter "'e'"
-echo "./ScalarConverter \'x\'"
+echo "./ScalarConverter 'x'"
 ./ScalarConverter "'x'"
-echo "./ScalarConverter \'/\'"
+echo "./ScalarConverter '/'"
 ./ScalarConverter "'/'"
-echo "./ScalarConverter \'?\'"
+echo "./ScalarConverter '?'"
 ./ScalarConverter "'?'"
-echo "./ScalarConverter \':\'"
+echo "./ScalarConverter ':'"
 ./ScalarConverter "':'"
-echo "./ScalarConverter \'%\'"
+echo "./ScalarConverter '%'"
 ./ScalarConverter "'%'"
-echo "./ScalarConverter \'1\'"
+echo "./ScalarConverter '1'"
 ./ScalarConverter "'1'"
 
 echo
