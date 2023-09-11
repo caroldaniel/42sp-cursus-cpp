@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 15:27:47 by cado-car          #+#    #+#              #
-#    Updated: 2023/08/30 19:12:55 by cado-car         ###   ########.fr        #
+#    Updated: 2023/09/11 12:23:37 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,10 @@ fclean:		clean
 			@printf "\n$(RE)Executables removed!$(RC)\n\n"
 
 leak:		all
-			valgrind --leak-check=full --track-origins=yes ./${NAME}
+			valgrind --leak-check=full --track-origins=yes ./${NAME} 0
+
+tests:		all
+			./tests.sh
 
 # Colors
 CY			= \033[36;1m

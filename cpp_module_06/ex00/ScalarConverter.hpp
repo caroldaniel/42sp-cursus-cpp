@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:07:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 20:10:21 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:09:47 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 # include <iostream>
 # include <cstdlib>
-# include <string.h>
+# include <cerrno>
+# include <climits>
 # include <limits>
+# include <cfloat>
+# include <string.h>
 
 // Macros
 # define RESET		"\e[m"
@@ -55,10 +58,10 @@ private:
     static bool _isFloat(const std::string &literal);
     static bool _isDouble(const std::string &literal);
     // Member functions for converting
-    static char _toChar(const std::string &literal);
-    static int _toInt(const std::string &literal);
-    static float _toFloat(const std::string &literal);
-    static double _toDouble(const std::string &literal);
+    static void _toChar(const std::string &literal);
+    static void _toInt(const std::string &literal);
+    static void _toFloat(const std::string &literal);
+    static void _toDouble(const std::string &literal);
 public:
     static void convert(const std::string &literal);
     // Exceptions
