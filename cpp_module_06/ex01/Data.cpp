@@ -6,13 +6,16 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:29:47 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/30 20:34:07 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:28:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
 
-Data::Data(void) : publicData("publicData"), _privateData("privateData"), _privateNumber(42) {
+Data::Data(void) : publicData("publicData"), _privateData("privateData"), _privateNumber(0) {
+    return ;
+}
+Data::Data(std::string public_data, std::string private_data, int private_number) : publicData(public_data), _privateData(private_data), _privateNumber(private_number) {
     return ;
 }
 Data::~Data(void) {
@@ -30,4 +33,12 @@ Data &Data::operator=(Data const &source) {
         this->_privateNumber = source._privateNumber;
     }
     return (*this);
+}
+
+// Getters
+std::string Data::getPrivateData(void) const {
+    return (this->_privateData);
+}
+int Data::getPrivateNumber(void) const {
+    return (this->_privateNumber);
 }
