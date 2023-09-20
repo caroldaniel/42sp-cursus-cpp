@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 21:58:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/31 22:02:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:18:51 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ Span::Span(unsigned int n) : _n(n) {
     return ;
 }
 Span::Span(const Span &source) {
-    this->_n = source.getN();
-    for (std::vector<int>::const_iterator it = source.getVec().begin(); it != source.getVec().end(); it++)
-        this->_vec.push_back(*it);
+	this->_n = source.getN();
+    const std::vector<int>& sourceVec = source.getVec();
+    for (size_t i = 0; i < sourceVec.size(); i++)
+        this->_vec.push_back(sourceVec[i]);
     return ;
 }
 Span::~Span() {
@@ -29,8 +30,9 @@ Span::~Span() {
 // Operators overload
 Span &Span::operator=(const Span &source) {
     this->_n = source.getN();
-    for (std::vector<int>::const_iterator it = source.getVec().begin(); it != source.getVec().end(); it++)
-        this->_vec.push_back(*it);
+    const std::vector<int>& sourceVec = source.getVec();
+    for (size_t i = 0; i < sourceVec.size(); i++)
+        this->_vec.push_back(sourceVec[i]);
     return (*this);
 }
 

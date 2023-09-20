@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 21:55:08 by cado-car          #+#    #+#             */
-/*   Updated: 2023/08/31 22:23:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:23:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ public:
     template <typename T>
     void    addRange(T begin, T end) {
         if (this->_vec.size() + std::distance(begin, end) > this->_n) {
-            std::cout << "Here" << std::endl;
             throw FullContainerException();
         }
         this->_vec.insert(this->_vec.end(), begin, end);
