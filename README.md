@@ -18,9 +18,9 @@ Originally designed to be a mini piscine, CPP is composed of 9 modules that atte
 	Final score
 </h2>
 
-<img alt="cado-car's 42Project Score"/>
+<img src="https://github.com/caroldaniel/caroldaniel-utils/blob/7dca4fee4635e8f4172fc37bc126493db5d1dcd3/cpp_grade.PNG" alt="cado-car's 42Project Score"/>
 <h4>Completed + Bonus</h4>
-<img alt="cado-car's 42Project Badge"/>
+<img src="https://github.com/caroldaniel/caroldaniel-utils/blob/7dca4fee4635e8f4172fc37bc126493db5d1dcd3/cppe.png" alt="cado-car's 42Project Badge"/>
 </div>
 
 ---
